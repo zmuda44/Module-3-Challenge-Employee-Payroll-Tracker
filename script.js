@@ -16,7 +16,7 @@ const collectEmployees = function() {
   let prompt3 = prompt("Enter Salary");
 
   //Ensure that salary is a number or return that it is not
-  function promptSalary () {
+  let promptSalary = function() {
     if(isNaN(prompt3)) {
       salaryCorrected = prompt("Please enter a Number");
         while(isNaN(salaryCorrected)) {
@@ -33,8 +33,9 @@ const collectEmployees = function() {
   let currentEmployee = {
     firstName: prompt1.charAt(0).toUpperCase() + prompt1.slice(1,prompt1.length).toLowerCase(),
     lastName: prompt2.charAt(0).toUpperCase() + prompt1.slice(1,prompt1.length).toLowerCase(),
-    salary: 100,
-    //"$ " + promptSalary(),
+    salaryNumber: promptSalary(),
+    salary: "$ " + promptSalary(),
+    
   }
 
   //Create empty array to push information to
@@ -54,20 +55,30 @@ const displayAverageSalary = function(employeesArray) {
   let totalSalary = 0;
   for (const employee of employeesArray) {
     // Extract the numerical value from the salary string and convert it to a number
-    const salary = employee.salary
+    const salary = Number(employee.salaryNumber);
     totalSalary += salary;
   }
+  function employeePlural () {
+    if (employeesArray.length < 2) {
+      return "employee"
+    }
+    else {
+      return "employees"
+    }
+
+  }
   const averageSalary = totalSalary / employeesArray.length;
-  console.log("Average Salary: $", averageSalary.toFixed(2));
+  console.log(`The average employee salary between our ${employeesArray.length} 
+  ${employeePlural()} is ${averageSalary.toFixed(2)}`);
 
   }
 
 
 // Select a random employee
 const getRandomEmployee = function(employeesArray) {
-  for (i = 0; i < employeesArray.length; i++) {
-    console.log(employeesArray[i])
-  }
+ let randomNumber = Math.floor(Math.random()*employeesArray.length);
+ randomObject = employeesArray[randomNumber];
+ console.log(`Congratulations to ${randomObject.firstName}, our random drawing winner!`);
 }
 
 /*
