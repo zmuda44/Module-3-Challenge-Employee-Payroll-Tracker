@@ -52,7 +52,7 @@ const collectEmployees = function() {
 // Display the average salary
 const displayAverageSalary = function(employeesArray) {
   // TODO: Calculate and display the average salary
-  let totalSalary = 0;
+  let totalSalary=0;
   for (const employee of employeesArray) {
     // Extract the numerical value from the salary string and convert it to a number
     const salary = Number(employee.salaryNumber);
