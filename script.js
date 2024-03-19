@@ -4,7 +4,7 @@ const addEmployeesBtn = document.querySelector('#add-employees-btn');
 // Collect employee data
 const collectEmployees = function() {
   //Start with an empty array that you will push each object to
-  const employeesArray = [];
+  const employees = [];
   //Start off with while loop condition met to run intially
   let addEmployees = true;
 
@@ -32,7 +32,7 @@ const collectEmployees = function() {
   //Create object to reference properties from
   let currentEmployee = {
     firstName: prompt1.charAt(0).toUpperCase() + prompt1.slice(1,prompt1.length).toLowerCase(),
-    lastName: prompt2.charAt(0).toUpperCase() + prompt1.slice(1,prompt1.length).toLowerCase(),
+    lastName: prompt2.charAt(0).toUpperCase() + prompt2.slice(1,prompt2.length).toLowerCase(),
     salaryNumber: promptSalary(),
     salary: "$ " + promptSalary(),
     
@@ -40,13 +40,13 @@ const collectEmployees = function() {
 
   //Create empty array to push information to
   
-  employeesArray.push(currentEmployee);
+  employees.push(currentEmployee);
 
   //Confirm that you would like to enter an employee
   addEmployees = confirm("Do you want to add another employee?")
 
   }
-  return employeesArray
+  return employees
 }
 
 // Display the average salary
