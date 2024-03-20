@@ -5,59 +5,59 @@ const addEmployeesBtn = document.querySelector('#add-employees-btn');
 const collectEmployees = function() {
   //Start with an empty array that you will push each object to
   const employees = [];
-  //Start off with while loop condition met to run intially
+  
+  //Start off with condition met to run intially
   let addEmployees = true;
 
   //A while loop to keep running the code until addEmployee is false
   while(addEmployees === true) {
   //Prompts to receive user input
-  let prompt1 = prompt("Enter first name");
-  let prompt2 = prompt("Enter last name");
-  let prompt3 = prompt("Enter Salary");
+    let prompt1 = prompt("Enter first name");
+    let prompt2 = prompt("Enter last name");
+    let prompt3 = prompt("Enter salary");
 
-  //Ensure that salary is a number or return that it is not
-  let promptSalary = function() {
-    if(isNaN(prompt3)) {
-      salaryCorrected = prompt("Please enter a Number");
-        while(isNaN(salaryCorrected)) {
-          salaryCorrected = prompt("Please enter number")
-        }
-      return salaryCorrected;
-    }
-    else {
-      return prompt3;
+    //Ensure that salary is a number. If not, prompt to reenter
+    let promptSalary = function() {
+      if(isNaN(prompt3)) {
+        salaryCorrected = prompt("Please enter a Number");
+          while(isNaN(salaryCorrected)) {
+            salaryCorrected = prompt("Please enter number")
+          }
+        return salaryCorrected;
+      }
+      else {
+        return prompt3;
+      }  
     }  
-  }  
  
-  //Create object to reference properties from
+  //Create object to reference displayed properties from
   let currentEmployee = {
     firstName: prompt1.charAt(0).toUpperCase() + prompt1.slice(1,prompt1.length).toLowerCase(),
     lastName: prompt2.charAt(0).toUpperCase() + prompt2.slice(1,prompt2.length).toLowerCase(),
     salaryNumber: promptSalary(),
-    salary: "$ " + promptSalary(),
-    
+    salary: "$ " + promptSalary(),    
   }
 
-  //Create empty array to push information to
-  
+  //Push object to empty array  
   employees.push(currentEmployee);
 
-  //Confirm that you would like to enter an employee
+  //Confirm that you would like to enter another employee
   addEmployees = confirm("Do you want to add another employee?")
-
   }
   return employees
 }
 
-// Display the average salary
+// Display the Average salary
 const displayAverageSalary = function(employeesArray) {
-  // TODO: Calculate and display the average salary
-  let totalSalary=0;
+  let totalSalary = 0;
+
+  // Get total salaries of all employees in the array
   for (const employee of employeesArray) {
-    // Extract the numerical value from the salary string and convert it to a number
     const salary = Number(employee.salaryNumber);
     totalSalary += salary;
   }
+
+  // Singular or plural in string
   function employeePlural () {
     if (employeesArray.length < 2) {
       return "employee"
@@ -65,13 +65,13 @@ const displayAverageSalary = function(employeesArray) {
     else {
       return "employees"
     }
-
   }
+
+  // Console log a string announcing the average salary
   const averageSalary = totalSalary / employeesArray.length;
   console.log(`The average employee salary between our ${employeesArray.length} 
   ${employeePlural()} is ${averageSalary.toFixed(2)}`);
-
-  }
+}
 
 
 // Select a random employee
