@@ -16,7 +16,7 @@ const collectEmployees = function() {
     let prompt2 = prompt("Enter last name");
     let prompt3 = prompt("Enter salary");
 
-    //Ensure that salary is a number. If not, prompt to reenter
+    //Ensure that salary is a number. If not, prompt to reenter. Also, if no value, make salary 0.
     let promptSalary = function() {
       if(isNaN(prompt3)) {
         salaryCorrected = prompt("Please enter a Number");
@@ -24,6 +24,9 @@ const collectEmployees = function() {
             salaryCorrected = prompt("Please enter number")
           }
         return salaryCorrected;
+      }
+      else if (prompt3 === "") {
+        return 0;
       }
       else {
         return prompt3;
