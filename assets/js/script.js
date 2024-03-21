@@ -50,7 +50,7 @@ const collectEmployees = function() {
   return employees
 }
 
-// Display the Average salary
+// Display the total and average salary
 const displayAverageSalary = function(employeesArray) {
   let totalSalary = 0;
 
@@ -70,10 +70,11 @@ const displayAverageSalary = function(employeesArray) {
     }
   }
 
-  // Console log a string announcing the average salary
+  // Console log a string announcing the total salary and a string annoucing average salary
   const averageSalary = totalSalary / employeesArray.length;
+  console.log(`The total salary of all employees combined is $${totalSalary}`)
   console.log(`The average employee salary between our ${employeesArray.length} 
-  ${employeePlural()} is ${averageSalary.toFixed(2)}`);
+  ${employeePlural()} is $${averageSalary.toFixed(2)}`);
 }
 
 
@@ -81,7 +82,7 @@ const displayAverageSalary = function(employeesArray) {
 const getRandomEmployee = function(employeesArray) {
  let randomNumber = Math.floor(Math.random()*employeesArray.length);
  randomObject = employeesArray[randomNumber];
- console.log(`Congratulations to ${randomObject.firstName}, our random drawing winner!`);
+ console.log(`Congratulations to ${randomObject.firstName} ${randomObject.lastName}, our random drawing winner!`);
 }
 
 /*
